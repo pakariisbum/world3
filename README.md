@@ -101,7 +101,7 @@ npm run start
 
 The chain ID should be 80001. If you have a localhost rpc set up, you may need to overwrite it.
 
-<p align="center" title="Project Initiator"><img src="./src/assets/rpc.png" alt="Project Initiator"/></p>
+<p align="center" title="Project Initiator"><img src="./src/assets/img/rpc.jpg" alt="Project Initiator"/></p>
 
 To deploy to Polygon test or main networks, update the configurations located in hardhat.config.js to use a private key and, optionally, deploy to a private RPC like Infura.
 
