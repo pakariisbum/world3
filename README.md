@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/king-technologies/Project-Initiator" title="Project Initiator">
-    <img src="./src/assets/logo.svg" width="80px" alt="Project Initiator"/>
+    <img src="./src/assets/img/logo2.svg" width="40px" alt="Project Initiator"/>
   </a>
 </p>
 <h1 align="center">🌟 World3 🌍 🌟</h1>
@@ -22,7 +22,7 @@
 </a>
 </p>
 
-<p align="center" title="Project Initiator"><img src="./src/assets/world3.jpg" alt="Project Initiator"/></p>
+<p align="center" title="Project Initiator"><img src="./src/assets/img/world3.jpg" alt="Project Initiator"/></p>
 
 <h2 align="center">🌐 Links 🌐</h2>
 <p align="center">
