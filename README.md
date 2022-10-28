@@ -107,7 +107,7 @@ To deploy to Polygon test or main networks, update the configurations located in
 
 ```Bash
 require('@nomiclabs/hardhat-waffle');
-const privateKey = 'xxx';
+const privateKey = 'xx';
 const projectId = 'xx';
 
 module.exports = {
