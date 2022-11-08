@@ -25,7 +25,7 @@ const Footer = () => {
             <img src={Logo2} alt="" className="w-12" />
           </div>
           <p className="text-paragraph opacity-80 text-[15px]">
-            &copy; 2022 World2. All rights reserved.
+            &copy; 2022 World3. All rights reserved.
           </p>
         </div>
       </div>

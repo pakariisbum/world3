@@ -6,6 +6,7 @@ import { AuthContext } from "../utils/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 import Logo2 from "../assets/img/logo2.svg";
 import { ethers } from "ethers";
+import { Web3Storage } from "web3.storage";
 
 const CreateProject = () => {
   const [title, settitle] = useState("");
@@ -51,26 +52,44 @@ const CreateProject = () => {
   const onError = (err) => {
     console.log("Error:", err); // Write your own logic
   };
+  function getAccessToken() {
+    return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDNCQzQzMDliYTJGRGIxMDZGZWM0YzJGMTJiZmE4RTMwQTUzMTZiZDUiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NjI0OTA3ODUyMjUsIm5hbWUiOiJkZWNlbnRyb2dlIn0.kcD-OCoPPtPAYR9Ph_cOfz0A9Jl_KamPPmo20j0Q1Dc";
+    // return token;
+  }
+
+  function makeStorageClient() {
+    return new Web3Storage({ token: getAccessToken() });
+  }
 
   async function onChange(e) {
     setisloading(true);
-    const file = e.target.files[0];
-    console.log(file);
-    try {
-      const added = await ipfs.add(file, {
-        progress: (prog) => console.log(`received: ${prog}`),
-      });
+    const files = e.target.files[0];
+    const client = makeStorageClient();
+    const cid = await client.put([files]);
+    console.log("stored files with cid:", cid);
 
-      const url = `https://infura-ipfs.io/ipfs/${added.path}`;
-      console.log(url);
-      setFile(url);
-      setisloading(false);
+    const res = await client.get(cid);
+    console.log(`Got a response! [${res.status}] ${res.statusText}`);
+    if (!res.ok) {
+      throw new Error(
+        `failed to get ${cid} - [${res.status}] ${res.statusText}`
+      );
+    }
+
+    // unpack File objects from the response
+    const filess = await res.files();
+    setFile(`https://${cid}.ipfs.dweb.link/${files.name}`);
+    // console.log(file);
+    console.log(files);
+    setisloading(false);
+    for (const file of filess) {
       setfiletype(file.name);
       setfilesize(file.size);
-      // setFileUrl(url);
-    } catch (error) {
-      console.log("Error uploading file: ", error);
+      console.log(
+        `${file.cid} -- ${file.path} -- ${file.size} -- ${file.name}`
+      );
     }
+    return cid;
   }
 
   function getExtension() {
@@ -166,7 +185,7 @@ const CreateProject = () => {
               </div>
               <div class="mb-5">
                 <label for="text" className="pb-5">
-                  Type of Explorer
+                  SDG goal{" "}
                 </label>
                 <select
                   onChange={(e) => {
@@ -217,12 +236,13 @@ const CreateProject = () => {
               </div>
               <div class="mb-5">
                 <label for="text" className="pb-5">
-                  Target
+                  Targeted Amount
                 </label>
                 <input
                   type="number"
                   name="text"
                   id="text"
+                  placeholder="eth"
                   value={target}
                   onChange={(e) => {
                     settarget(e.target.value);
