@@ -38,7 +38,7 @@ const SingleProject = () => {
     console.log("closed");
   };
   async function getProjects() {
-    const res = await signer?.getProject();
+    const res = await contract?.getProject();
     const filt = res.filter((items) => items?.projectId?.toString() === id);
     setproject(filt[0]);
   }
@@ -60,7 +60,7 @@ const SingleProject = () => {
   };
 
   async function getEthUsd() {
-    const getUsd = await signer?.getEthUsd();
+    const getUsd = await contract?.getEthUsd();
     setusdeth(getUsd);
   }
 
@@ -77,7 +77,7 @@ const SingleProject = () => {
     getProjects();
     getEthUsd();
     console.log(address);
-  }, [signer]);
+  }, [signer, contract]);
 
   return (
     <div>
