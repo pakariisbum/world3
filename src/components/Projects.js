@@ -18,12 +18,12 @@ const Projects = () => {
     useContext(AuthContext);
 
   async function getProjects() {
-    const res = await signer?.getProject();
+    const res = await contract?.getProject();
     setProjects(res);
   }
   useEffect(() => {
     getProjects();
-  }, [signer, item]);
+  }, [contract, item]);
 
   useEffect(() => {
     // get projects based on item

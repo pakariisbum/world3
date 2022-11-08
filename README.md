@@ -26,9 +26,9 @@
 
 <h2 align="center">🌐 Links 🌐</h2>
 <p align="center">
-    <a href="https://youtu.be/ud4P45zhCk0" title="">🖥️ Video</a>
+    <a href="https://youtu.be/Omhoy1e5pNg" title="">🖥️ Video</a>
     .
-    <a href="https://youtu.be/ud4P45zhCk0" title="">🔗 Website</a>
+    <a href="https://world3s.netlify.app/" title="">🔗 Website</a>
     ·
     <a href="https://github.com/pakariisbum/world3" title="">📂 Repo</a>
     ·
